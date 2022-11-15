@@ -41,3 +41,8 @@ export const SignUpTitle = styled(Title)`
   color: ${({theme}) => theme.colors.primaryLight};
   margin-left: 16px;
 `
+export const Logo = styled.Image`
+  width: ${RFValue(166)}px;
+  height: ${RFValue(166)}px;
+  margin-bottom: ${RFValue(64)}px;
+`
