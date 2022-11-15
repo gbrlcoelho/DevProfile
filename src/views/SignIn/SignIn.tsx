@@ -1,22 +1,37 @@
+import {useNavigation} from '@react-navigation/native'
 import React from 'react'
-import {ScrollView} from 'react-native'
+import {KeyboardAvoidingView, ScrollView, View} from 'react-native'
+import {useTheme} from 'styled-components'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
-import {Container, Content, Logo, Title} from './SignInBase'
+import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
+import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
 
 export const SignIn = () => {
+  const theme = useTheme()
+  const {navigate} = useNavigation()
+
   return (
-    <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={{flex: 1}}>
-      <Container>
-        <Content>
-          <Logo source={logo} />
-          <Title>Faça seu login</Title>
-          <Input placeholder='Email' />
-          <Input placeholder='Senha' />
-          <Button title='Entrar' />
-        </Content>
-      </Container>
-    </ScrollView>
+    <KeyboardAvoidingView enabled style={{flex: 1}} behavior={avoidingViewBehavior}>
+      <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={{flex: 1}}>
+        <Container>
+          <Content>
+            <Logo source={logo} />
+            <View>
+              <Title>Faça seu login</Title>
+            </View>
+            <Input placeholder='Email' />
+            <Input placeholder='Senha' />
+            <Button title='Entrar' />
+            <Button title='Esqueci minha senha' backgroundColor={theme.colors.dark} titleColor={theme.colors.gray500} />
+          </Content>
+        </Container>
+      </ScrollView>
+      <SignUpButton onPress={() => navigate('SignUp')}>
+        <Icon name='log-in' />
+        <SignUpTitle>Criar uma conta</SignUpTitle>
+      </SignUpButton>
+    </KeyboardAvoidingView>
   )
 }

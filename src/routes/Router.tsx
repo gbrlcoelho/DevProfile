@@ -4,6 +4,6 @@ import {AppStack} from './AppStack'
 import {AuthStack} from './AuthStack'
 
 export const Router = () => {
-  const authData = true
+  const authData = false
   return <NavigationContainer>{authData ? <AppStack /> : <AuthStack />}</NavigationContainer>
 }
