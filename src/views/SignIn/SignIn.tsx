@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native'
 import React from 'react'
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native'
 import {useTheme} from 'styled-components'
@@ -9,6 +10,7 @@ import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from '
 
 export const SignIn = () => {
   const theme = useTheme()
+  const {navigate} = useNavigation()
 
   return (
     <KeyboardAvoidingView enabled style={{flex: 1}} behavior={avoidingViewBehavior}>
@@ -26,7 +28,7 @@ export const SignIn = () => {
           </Content>
         </Container>
       </ScrollView>
-      <SignUpButton>
+      <SignUpButton onPress={() => navigate('SignUp')}>
         <Icon name='log-in' />
         <SignUpTitle>Criar uma conta</SignUpTitle>
       </SignUpButton>

@@ -1,17 +1,19 @@
+import {useNavigation} from '@react-navigation/native'
 import React from 'react'
 import {KeyboardAvoidingView, ScrollView} from 'react-native'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
-import {Logo} from '../SignIn/SignInBase'
+import {Icon, Logo, SignUpButton, SignUpTitle} from '../SignIn/SignInBase'
 import {Container, Content, Title} from './SignUpBase'
 
 export const SignUp = () => {
+  const {goBack} = useNavigation()
+
   return (
     <KeyboardAvoidingView enabled style={{flex: 1}} behavior={avoidingViewBehavior}>
       <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={{flex: 1}}>
-        <Logo />
         <Container>
           <Content>
             <Logo source={logo} />
@@ -23,6 +25,10 @@ export const SignUp = () => {
           </Content>
         </Container>
       </ScrollView>
+      <SignUpButton onPress={() => goBack()}>
+        <Icon name='arrow-left' />
+        <SignUpTitle>Voltar para login</SignUpTitle>
+      </SignUpButton>
     </KeyboardAvoidingView>
   )
 }
