@@ -1,13 +1,14 @@
 import React from 'react'
-import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native'
+import {KeyboardAvoidingView, ScrollView, View} from 'react-native'
 import {useTheme} from 'styled-components'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import {Container, Content, Icon, SignUpButton, SignUpTitle, Title} from './SignInBase'
 
 export const SignIn = () => {
   const theme = useTheme()
-  const avoidingViewBehavior = Platform.OS === 'ios' ? 'padding' : undefined
+
   return (
     <KeyboardAvoidingView enabled style={{flex: 1}} behavior={avoidingViewBehavior}>
       <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={{flex: 1}}>
