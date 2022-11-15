@@ -1,10 +1,11 @@
 import React from 'react'
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native'
 import {useTheme} from 'styled-components'
+import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
-import {Container, Content, Icon, SignUpButton, SignUpTitle, Title} from './SignInBase'
+import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
 
 export const SignIn = () => {
   const theme = useTheme()
@@ -14,6 +15,7 @@ export const SignIn = () => {
       <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={{flex: 1}}>
         <Container>
           <Content>
+            <Logo source={logo} />
             <View>
               <Title>Faça seu login</Title>
             </View>
