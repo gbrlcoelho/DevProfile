@@ -1,16 +1,36 @@
+import {yupResolver} from '@hookform/resolvers/yup'
 import {useNavigation} from '@react-navigation/native'
 import React from 'react'
+import {FieldValues, useForm} from 'react-hook-form'
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native'
 import {useTheme} from 'styled-components'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
+import signInSchema from '../../validations/SignInSchema'
 import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
+import {SignInForm} from './SignInProps'
 
 export const SignIn = () => {
+  const {
+    handleSubmit,
+    control,
+    formState: {errors},
+  } = useForm<FieldValues>({
+    resolver: yupResolver(signInSchema),
+  })
   const theme = useTheme()
   const {navigate} = useNavigation()
+
+  const handleSignIn = (form: SignInForm) => {
+    const data = {
+      email: form.email,
+      password: form.password,
+    }
+
+    console.log(data)
+  }
 
   return (
     <KeyboardAvoidingView enabled style={{flex: 1}} behavior={avoidingViewBehavior}>
@@ -21,9 +41,25 @@ export const SignIn = () => {
             <View>
               <Title>Faça seu login</Title>
             </View>
-            <Input placeholder='Email' />
-            <Input placeholder='Senha' />
-            <Button title='Entrar' />
+            <Input
+              name='email'
+              placeholder='Email'
+              control={control}
+              autoCapitalize='none'
+              autoCorrect={false}
+              keyboardType='email-address'
+              error={errors.email && errors.email.message}
+            />
+            <Input
+              name='password'
+              placeholder='Senha'
+              control={control}
+              autoCapitalize='none'
+              autoCorrect={false}
+              secureTextEntry={true}
+              error={errors.password && errors.password.message}
+            />
+            <Button title='Entrar' onPress={handleSubmit(handleSignIn)} />
             <Button title='Esqueci minha senha' backgroundColor={theme.colors.dark} titleColor={theme.colors.gray500} />
           </Content>
         </Container>
