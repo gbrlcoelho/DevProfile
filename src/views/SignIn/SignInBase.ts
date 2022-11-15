@@ -18,3 +18,8 @@ export const Title = styled.Text`
   color: ${({theme}) => theme.colors.light};
   margin-bottom: 24px;
 `
+export const Logo = styled.Image`
+  width: ${RFValue(166)}px;
+  height: ${RFValue(166)}px;
+  margin-bottom: ${RFValue(64)}px;
+`
