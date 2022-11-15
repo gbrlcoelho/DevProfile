@@ -15,3 +15,9 @@ export const InputControl = styled(TextInput)`
   margin-bottom: 16px;
   font-size: ${RFValue(14)}px;
 `
+
+export const ErrorText = styled.Text`
+  font-size: ${RFValue(14)}px;
+  color: ${({theme}) => theme.colors.danger};
+  margin-bottom: 16px;
+`

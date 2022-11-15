@@ -1,10 +1,10 @@
 import React from 'react'
 import {Controller} from 'react-hook-form'
 import {useTheme} from 'styled-components'
-import {Container, InputControl} from './InputBase'
+import {Container, ErrorText, InputControl} from './InputBase'
 import {InputProps} from './InputProps'
 
-export const Input = ({name, control, ...inputProps}: InputProps) => {
+export const Input = ({name, control, error, ...inputProps}: InputProps) => {
   const theme = useTheme()
   return (
     <Container>
@@ -20,6 +20,7 @@ export const Input = ({name, control, ...inputProps}: InputProps) => {
         )}
         name={name}
       />
+      {typeof error === 'string' ? <ErrorText>{error}</ErrorText> : null}
     </Container>
   )
 }
