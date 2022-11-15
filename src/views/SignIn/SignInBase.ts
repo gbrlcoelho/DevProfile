@@ -1,4 +1,5 @@
 import {RFValue} from 'react-native-responsive-fontsize'
+import Feather from 'react-native-vector-icons/Feather'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
@@ -17,4 +18,26 @@ export const Title = styled.Text`
   font-size: ${RFValue(18)}px;
   color: ${({theme}) => theme.colors.light};
   margin-bottom: 24px;
+`
+export const Icon = styled(Feather)`
+  font-size: ${RFValue(20)}px;
+  color: ${({theme}) => theme.colors.primaryLight};
+  bottom: 10px;
+`
+export const SignUpButton = styled.TouchableOpacity`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: ${({theme}) => theme.colors.gray800};
+  border-top-width: 1px;
+  border-color: ${({theme}) => theme.colors.black};
+  padding: 16px 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`
+export const SignUpTitle = styled(Title)`
+  color: ${({theme}) => theme.colors.primaryLight};
+  margin-left: 16px;
 `
