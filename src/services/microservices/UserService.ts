@@ -1,5 +1,5 @@
 import {axios} from '../Services'
-import {ApiResponse} from './types'
+import {ApiResponse, IPostUser, IUserResponse} from './types'
 
 class UserService {
   private postUser: string
@@ -8,7 +8,7 @@ class UserService {
     this.postUser = '/users'
   }
 
-  postNewUser = async (data: any): ApiResponse<any> => {
+  postNewUser = async (data: IPostUser): ApiResponse<IUserResponse> => {
     return await axios.post(`${this.postUser}`, data)
   }
 }
