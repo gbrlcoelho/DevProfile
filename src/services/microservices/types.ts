@@ -9,12 +9,10 @@ export interface IPostUser {
 }
 
 export interface IUserResponse {
+  id: string
   name: string
   email: string
-  id: string
-  created_at: string
-  updated_at: string
-  avatar_url: string
+  avatar_url?: string
 }
 
 export interface IUserAuthenticationResponse {
