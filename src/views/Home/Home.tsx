@@ -1,4 +1,5 @@
 import React from 'react'
+import {Alert} from 'react-native'
 import avatarDefault from '../../assets/avatar01.jpeg'
 import {useAuth} from '../../hooks/useAuth'
 import {
@@ -19,6 +20,19 @@ export const Home = () => {
   const {authData, signOut} = useAuth()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
 
+  const handleSignOut = () => {
+    Alert.alert('Tem certeza?', 'Deseja sair do DevProfile?', [
+      {
+        text: 'Cancelar',
+        onPress: () => {},
+      },
+      {
+        text: 'Sair',
+        onPress: () => signOut(),
+      },
+    ])
+  }
+
   return (
     <Container>
       <Header>
@@ -32,7 +46,7 @@ export const Home = () => {
               <UserName>{authData?.user.name}</UserName>
             </UserInfoDetail>
           </UserInfo>
-          <LogoutButton onPress={signOut}>
+          <LogoutButton onPress={handleSignOut}>
             <Icon name='power' />
           </LogoutButton>
         </UserWrapper>
