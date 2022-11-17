@@ -7,3 +7,20 @@ export interface IPostUser {
   email: string
   password: string
 }
+
+export interface IUserResponse {
+  id: string
+  name: string
+  email: string
+  avatar_url?: string
+}
+
+export interface IUserAuthenticationResponse {
+  token: string
+  user: IUserResponse
+}
+
+export interface IUserAuthentication {
+  email: string
+  password: string
+}

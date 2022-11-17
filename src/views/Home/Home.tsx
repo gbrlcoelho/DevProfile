@@ -1,5 +1,6 @@
 import React from 'react'
 import avatarDefault from '../../assets/avatar01.jpeg'
+import {useAuth} from '../../hooks/useAuth'
 import {
   Container,
   Header,
@@ -15,20 +16,23 @@ import {
 } from './HomeBase'
 
 export const Home = () => {
+  const {authData, signOut} = useAuth()
+  const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
+
   return (
     <Container>
       <Header>
         <UserWrapper>
           <UserInfo>
             <UserAvatarButton onPress={() => {}}>
-              <UserAvatar source={avatarDefault} />
+              <UserAvatar source={userAvatar} />
             </UserAvatarButton>
             <UserInfoDetail>
               <UserGreeting>Olá,</UserGreeting>
-              <UserName>Gabriel</UserName>
+              <UserName>{authData?.user.name}</UserName>
             </UserInfoDetail>
           </UserInfo>
-          <LogoutButton onPress={() => {}}>
+          <LogoutButton onPress={signOut}>
             <Icon name='power' />
           </LogoutButton>
         </UserWrapper>
