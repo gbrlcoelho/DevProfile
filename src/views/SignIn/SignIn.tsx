@@ -7,6 +7,7 @@ import {useTheme} from 'styled-components'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {useAuth} from '../../hooks/useAuth'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import signInSchema from '../../validations/SignInSchema'
 import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
@@ -21,6 +22,7 @@ export const SignIn = () => {
     resolver: yupResolver(signInSchema),
   })
   const theme = useTheme()
+  const {signIn} = useAuth()
   const {navigate} = useNavigation()
 
   const handleSignIn = (form: SignInForm) => {
@@ -28,8 +30,7 @@ export const SignIn = () => {
       email: form.email,
       password: form.password,
     }
-
-    console.log(data)
+    signIn(data)
   }
 
   return (
