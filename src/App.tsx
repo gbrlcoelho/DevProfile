@@ -8,7 +8,7 @@ import {Router} from './routes/Router'
 const App = () => {
   return (
     <>
-      <StatusBar barStyle={'light-content'} backgroundColor={'#121214'} />
+      <StatusBar backgroundColor='transparent' translucent />
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <Router />
