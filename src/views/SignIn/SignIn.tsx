@@ -61,7 +61,12 @@ export const SignIn = () => {
               error={errors.password && errors.password.message}
             />
             <Button title='Entrar' onPress={handleSubmit(handleSignIn)} />
-            <Button title='Esqueci minha senha' backgroundColor={theme.colors.dark} titleColor={theme.colors.gray500} />
+            <Button
+              title='Esqueci minha senha'
+              backgroundColor={theme.colors.dark}
+              titleColor={theme.colors.gray500}
+              onPress={() => navigate('ForgotPassword')}
+            />
           </Content>
         </Container>
       </ScrollView>
