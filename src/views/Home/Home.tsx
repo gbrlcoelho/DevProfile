@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native'
 import React, {useEffect, useState} from 'react'
 import {Alert} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
@@ -20,6 +21,7 @@ import {
 } from './HomeBase'
 
 export const Home = () => {
+  const {navigate} = useNavigation()
   const {authData, signOut} = useAuth()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
   const [users, setUsers] = useState<IUserResponse[]>([])
@@ -38,6 +40,10 @@ export const Home = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const navigateToUserDetails = (userId: string) => {
+    navigate('UserDetails', {id: userId})
   }
 
   useEffect(() => {
@@ -62,7 +68,7 @@ export const Home = () => {
           </TouchableOpacity>
         </UserWrapper>
       </Header>
-      <DataList data={users} navigateToUserDetails={() => {}} />
+      <DataList data={users} navigateToUserDetails={(id) => navigateToUserDetails(id)} />
     </Container>
   )
 }
