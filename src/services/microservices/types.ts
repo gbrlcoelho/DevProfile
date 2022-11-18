@@ -24,3 +24,9 @@ export interface IUserAuthentication {
   email: string
   password: string
 }
+
+export interface IResetPassword {
+  token: string
+  password: string
+  passwordConfirmation: string
+}
