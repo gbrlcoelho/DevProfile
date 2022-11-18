@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
 import {ForgotPassword} from '../views/ForgotPassword/ForgotPassword'
+import {ResetPassword} from '../views/ResetPassword/ResetPassword'
 import {SignIn} from '../views/SignIn/SignIn'
 import {SignUp} from '../views/SignUp/SignUp'
 
@@ -12,6 +13,7 @@ export const AuthStack = () => {
       <Screen name='SignIn' component={SignIn} />
       <Screen name='SignUp' component={SignUp} />
       <Screen name='ForgotPassword' component={ForgotPassword} />
+      <Screen name='ResetPassword' component={ResetPassword} />
     </Navigator>
   )
 }

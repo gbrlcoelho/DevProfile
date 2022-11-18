@@ -29,7 +29,7 @@ export const ForgotPassword = () => {
       }
       await UserService.postForgotPassword(data)
       Alert.alert('Email enviado', 'Você receberá um email com as instruções para redefinição da senha.')
-      navigate('SignIn')
+      navigate('ResetPassword')
     } catch (error) {
       Alert.alert('Erro no envio de email', 'Ocorreu um erro ao enviar o email, tente novamente.')
     }
