@@ -2,5 +2,5 @@ import {IUserResponse} from '../../services/api'
 
 export interface DataListProps {
   data: IUserResponse[]
-  navigateToUserDetails: () => void
+  navigateToUserDetails: (id: string) => void
 }
