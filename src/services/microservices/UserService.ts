@@ -2,17 +2,18 @@ import {axios} from '../Services'
 import {ApiResponse, IPostUser, IResetPassword, IUserResponse} from './types'
 
 class UserService {
-  private postUser: string
+  private users: string
   private forgotPassword: string
   private resetPassword: string
+
   constructor() {
-    this.postUser = '/users'
+    this.users = '/users'
     this.forgotPassword = '/password/forgot'
     this.resetPassword = '/password/reset'
   }
 
   postNewUser = async (data: IPostUser): ApiResponse<IUserResponse> => {
-    return await axios.post(`${this.postUser}`, data)
+    return await axios.post(`${this.users}`, data)
   }
 
   postForgotPassword = async (email: Partial<IPostUser>) => {
@@ -21,6 +22,10 @@ class UserService {
 
   postResetPassword = async (data: IResetPassword) => {
     return await axios.post(`${this.resetPassword}`, data)
+  }
+
+  getUsers = async () => {
+    return await axios.get(this.users)
   }
 }
 export default new UserService()
