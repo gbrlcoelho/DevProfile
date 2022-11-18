@@ -1,12 +1,15 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Alert} from 'react-native'
+import {TouchableOpacity} from 'react-native-gesture-handler'
 import avatarDefault from '../../assets/avatar01.jpeg'
+import {DataList} from '../../components/Datalist/DataList'
 import {useAuth} from '../../hooks/useAuth'
+import {IUserResponse} from '../../services/api'
+import UserService from '../../services/microservices/UserService'
 import {
   Container,
   Header,
   Icon,
-  LogoutButton,
   UserAvatar,
   UserAvatarButton,
   UserGreeting,
@@ -19,19 +22,27 @@ import {
 export const Home = () => {
   const {authData, signOut} = useAuth()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
+  const [users, setUsers] = useState<IUserResponse[]>([])
 
   const handleSignOut = () => {
     Alert.alert('Tem certeza?', 'Deseja sair do DevProfile?', [
-      {
-        text: 'Cancelar',
-        onPress: () => {},
-      },
-      {
-        text: 'Sair',
-        onPress: () => signOut(),
-      },
+      {text: 'Cancelar', onPress: () => {}},
+      {text: 'Sair', onPress: () => signOut()},
     ])
   }
+
+  const loadUsers = async () => {
+    try {
+      const response = await UserService.getUsers()
+      setUsers(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    loadUsers()
+  }, [])
 
   return (
     <Container>
@@ -46,11 +57,12 @@ export const Home = () => {
               <UserName>{authData?.user.name}</UserName>
             </UserInfoDetail>
           </UserInfo>
-          <LogoutButton onPress={handleSignOut}>
+          <TouchableOpacity onPress={handleSignOut}>
             <Icon name='power' />
-          </LogoutButton>
+          </TouchableOpacity>
         </UserWrapper>
       </Header>
+      <DataList data={users} navigateToUserDetails={() => {}} />
     </Container>
   )
 }
