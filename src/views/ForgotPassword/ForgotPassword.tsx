@@ -25,7 +25,7 @@ export const ForgotPassword = () => {
   const handleForgotPassword = async (form: Partial<SignUpForm>) => {
     try {
       const data = {
-        email: form.email.toString(),
+        email: form.email,
       }
       await UserService.postForgotPassword(data)
       Alert.alert('Email enviado', 'Você receberá um email com as instruções para redefinição da senha.')

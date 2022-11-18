@@ -15,7 +15,7 @@ class UserService {
     return await axios.post(`${this.postUser}`, data)
   }
 
-  postForgotPassword = async ({email}: Partial<IPostUser>) => {
+  postForgotPassword = async (email: Partial<IPostUser>) => {
     return await axios.post(`${this.forgotPassword}`, email)
   }
 
