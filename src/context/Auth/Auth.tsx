@@ -10,7 +10,7 @@ import {AuthContextData, AuthData, ChildrenProps, ICredentials} from './types'
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC<ChildrenProps> = ({children}) => {
-  const [authData, setAuthData] = useState<AuthData>({} as AuthData)
+  const [authData, setAuthData] = useState<AuthData>()
   const [loading, setLoading] = useState(false)
 
   const signIn = async ({email, password}: ICredentials) => {
@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({children}) => {
   }
 
   const signOut = async () => {
-    setAuthData({} as AuthData)
+    setAuthData(undefined)
     AuthService.removeAccessToken()
     await AsyncStorage.removeItem(tokenData)
     await AsyncStorage.removeItem(userData)
