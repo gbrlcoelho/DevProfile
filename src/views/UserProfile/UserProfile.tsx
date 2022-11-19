@@ -51,7 +51,7 @@ export const UserProfile = () => {
           <DataText>{authData!.user.email}</DataText>
         </UserDetail>
         <Button title='Editar Dados' onPress={() => navigate('UserProfileEdit')} />
-        <Button title='Trocar Senha' onPress={() => {}} />
+        <Button title='Trocar Senha' onPress={() => navigate('UserProfilePassword')} />
       </Content>
     </Container>
   )
