@@ -1,5 +1,7 @@
+import {REACT_APP_BASE_URL} from '@env'
+
 const config = {
-  baseURL: 'http://192.168.15.44:3333/',
+  baseURL: REACT_APP_BASE_URL,
 }
 
 export default config
