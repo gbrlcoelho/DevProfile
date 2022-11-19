@@ -9,6 +9,7 @@ export declare global {
       ResetPassword: undefined
       UserDetails: Partial<IUserResponse> | undefined
       UserProfile: Partial<IUserResponse> | undefined
+      UserProfileEdit: undefined
     }
   }
 }
