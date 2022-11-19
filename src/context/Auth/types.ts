@@ -13,6 +13,7 @@ export interface AuthContextData {
   loading: boolean
   signIn: ({email, password}: ICredentials) => Promise<void>
   signOut: () => void
+  updateUser: (user: IUserResponse) => void
 }
 
 export interface ICredentials {
