@@ -3,6 +3,7 @@ import React from 'react'
 import {Home} from '../views/Home/Home'
 import {UserDetails} from '../views/UserDetails/UserDetails'
 import {UserProfile} from '../views/UserProfile/UserProfile'
+import {UserProfileEdit} from '../views/UserProfileEdit/UserProfileEdit'
 
 const {Navigator, Screen} = createNativeStackNavigator()
 
@@ -12,6 +13,7 @@ export const AppStack = () => {
       <Screen name='Home' component={Home} />
       <Screen name='UserDetails' component={UserDetails} />
       <Screen name='UserProfile' component={UserProfile} />
+      <Screen name='UserProfileEdit' component={UserProfileEdit} />
     </Navigator>
   )
 }
