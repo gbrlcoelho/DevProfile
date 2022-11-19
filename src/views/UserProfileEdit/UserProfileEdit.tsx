@@ -10,7 +10,7 @@ import {useAuth} from '../../hooks/useAuth'
 import UserService from '../../services/microservices/UserService'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import userProfileEditSchema from '../../validations/UserProfileEditSchema'
-import {SignInForm} from '../SignIn/SignInProps'
+import {IFormInput} from '../SignIn/SignInProps'
 import {GoBackButton, Header, HeaderTitle, Icon, UserAvatar} from '../UserDetails/UserDetailsBase'
 import {Container, Content, Title} from './UserProfileEditBase'
 
@@ -30,7 +30,7 @@ export const UserProfileEdit = () => {
     },
   })
 
-  const handleProfileEdit = async (form: SignInForm) => {
+  const handleProfileEdit = async (form: IFormInput) => {
     const data = {
       name: form.name,
       email: form.email,

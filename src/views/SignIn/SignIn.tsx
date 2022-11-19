@@ -11,7 +11,7 @@ import {useAuth} from '../../hooks/useAuth'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import signInSchema from '../../validations/SignInSchema'
 import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
-import {SignInForm} from './SignInProps'
+import {IFormInput} from './SignInProps'
 
 export const SignIn = () => {
   const {
@@ -25,7 +25,7 @@ export const SignIn = () => {
   const {signIn} = useAuth()
   const {navigate} = useNavigation()
 
-  const handleSignIn = (form: SignInForm) => {
+  const handleSignIn = (form: IFormInput) => {
     const data = {
       email: form.email,
       password: form.password,

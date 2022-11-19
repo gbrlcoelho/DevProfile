@@ -1,3 +1,3 @@
-export interface SignInForm {
+export interface IFormInput {
   [name: string]: any
 }
