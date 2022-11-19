@@ -5,11 +5,13 @@ class UserService {
   private users: string
   private forgotPassword: string
   private resetPassword: string
+  private profile: string
 
   constructor() {
     this.users = '/users'
     this.forgotPassword = '/password/forgot'
     this.resetPassword = '/password/reset'
+    this.profile = '/profile'
   }
 
   postNewUser = async (data: IPostUser): ApiResponse<IUserResponse> => {
@@ -30,6 +32,10 @@ class UserService {
 
   getUserDetails = async (id: string): ApiResponse<IUserResponse> => {
     return await axios.get(`${this.users}/${id}`)
+  }
+
+  putUserProfile = async (data: Partial<IUserResponse>): ApiResponse<IUserResponse> => {
+    return await axios.put(`${this.profile}`, data)
   }
 }
 export default new UserService()
