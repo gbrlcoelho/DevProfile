@@ -12,7 +12,6 @@ import {
   Header,
   Icon,
   UserAvatar,
-  UserAvatarButton,
   UserGreeting,
   UserInfo,
   UserInfoDetail,
@@ -55,9 +54,9 @@ export const Home = () => {
       <Header>
         <UserWrapper>
           <UserInfo>
-            <UserAvatarButton onPress={() => {}}>
+            <TouchableOpacity onPress={() => {}}>
               <UserAvatar source={userAvatar} />
-            </UserAvatarButton>
+            </TouchableOpacity>
             <UserInfoDetail>
               <UserGreeting>Olá,</UserGreeting>
               <UserName>{authData?.user.name}</UserName>

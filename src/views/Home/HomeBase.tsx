@@ -30,8 +30,6 @@ export const UserInfo = styled.View`
   align-items: center;
 `
 
-export const UserAvatarButton = styled.TouchableOpacity``
-
 export const UserAvatar = styled.Image`
   width: ${RFValue(52)}px;
   height: ${RFValue(52)}px;
