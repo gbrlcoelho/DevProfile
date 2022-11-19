@@ -45,6 +45,10 @@ export const Home = () => {
     navigate('UserDetails', {id: userId})
   }
 
+  const navigateToUserProfile = () => {
+    navigate('UserProfile')
+  }
+
   useEffect(() => {
     loadUsers()
   }, [])
@@ -54,7 +58,7 @@ export const Home = () => {
       <Header>
         <UserWrapper>
           <UserInfo>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={navigateToUserProfile}>
               <UserAvatar source={userAvatar} />
             </TouchableOpacity>
             <UserInfoDetail>
