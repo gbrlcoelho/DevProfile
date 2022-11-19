@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {createContext, useEffect, useState} from 'react'
 import {Alert} from 'react-native'
-import {isAxiosError} from '../../services/api'
+import {isAxiosError, IUserResponse} from '../../services/api'
 import AuthService from '../../services/microservices/AuthService'
 import {axios} from '../../services/Services'
 import {tokenData, userData} from '../../utils/asyncStorageKeys'
@@ -36,6 +36,11 @@ export const AuthProvider: React.FC<ChildrenProps> = ({children}) => {
     await AsyncStorage.removeItem(userData)
   }
 
+  const updateUser = async (user: IUserResponse) => {
+    await AsyncStorage.setItem(userData, JSON.stringify(user))
+    setAuthData({user, token: authData!.token})
+  }
+
   const loadAuthData = async () => {
     const token = await AsyncStorage.getItem(tokenData)
     const user = await AsyncStorage.getItem(userData)
@@ -60,5 +65,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({children}) => {
     return () => axios.interceptors.response.eject(id)
   }, [])
 
-  return <AuthContext.Provider value={{authData, signIn, signOut, loading}}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{authData, signIn, signOut, loading, updateUser}}>{children}</AuthContext.Provider>
+  )
 }

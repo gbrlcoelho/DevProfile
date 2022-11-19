@@ -21,7 +21,7 @@ import {
 
 export const UserProfile = () => {
   const {authData} = useAuth()
-  const {goBack} = useNavigation()
+  const {goBack, navigate} = useNavigation()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
 
   return (
@@ -50,7 +50,7 @@ export const UserProfile = () => {
           <Title>EMAIL</Title>
           <DataText>{authData!.user.email}</DataText>
         </UserDetail>
-        <Button title='Editar Dados' onPress={() => {}} />
+        <Button title='Editar Dados' onPress={() => navigate('UserProfileEdit')} />
         <Button title='Trocar Senha' onPress={() => {}} />
       </Content>
     </Container>
