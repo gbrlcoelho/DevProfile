@@ -10,6 +10,7 @@ export declare global {
       UserDetails: Partial<IUserResponse> | undefined
       UserProfile: Partial<IUserResponse> | undefined
       UserProfileEdit: undefined
+      UserProfilePassword: undefined
     }
   }
 }

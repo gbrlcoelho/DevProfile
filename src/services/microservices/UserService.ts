@@ -1,5 +1,5 @@
 import {axios} from '../Services'
-import {ApiResponse, IPostUser, IResetPassword, IUserResponse} from './types'
+import {ApiResponse, IPostUser, IProfileEditPassword, IResetPassword, IUserResponse} from './types'
 
 class UserService {
   private users: string
@@ -35,6 +35,10 @@ class UserService {
   }
 
   putUserProfile = async (data: Partial<IUserResponse>): ApiResponse<IUserResponse> => {
+    return await axios.put(`${this.profile}`, data)
+  }
+
+  putResetPassword = async (data: IProfileEditPassword) => {
     return await axios.put(`${this.profile}`, data)
   }
 }

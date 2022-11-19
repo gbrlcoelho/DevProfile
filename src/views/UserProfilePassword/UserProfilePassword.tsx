@@ -9,12 +9,12 @@ import {Input} from '../../components/Input/Input'
 import {useAuth} from '../../hooks/useAuth'
 import UserService from '../../services/microservices/UserService'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
-import userProfileEditSchema from '../../validations/UserProfileEditSchema'
+import userProfilePasswordSchema from '../../validations/UserProfilePasswordSchema'
 import {IFormInput} from '../SignIn/SignInProps'
 import {GoBackButton, Header, HeaderTitle, Icon, UserAvatar} from '../UserDetails/UserDetailsBase'
-import {Container, Content, Title} from './UserProfileEditBase'
+import {Container, Content, Title} from './UserProfilePasswordBase'
 
-export const UserProfileEdit = () => {
+export const UserProfilePassword = () => {
   const {authData, updateUser} = useAuth()
   const {goBack} = useNavigation()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
@@ -23,25 +23,25 @@ export const UserProfileEdit = () => {
     control,
     formState: {errors},
   } = useForm<FieldValues>({
-    resolver: yupResolver(userProfileEditSchema),
-    defaultValues: {
-      name: authData!.user.name,
-      email: authData!.user.email,
-    },
+    resolver: yupResolver(userProfilePasswordSchema),
   })
 
-  const handleProfileEdit = async (form: IFormInput) => {
+  const handleUpdatePassword = async (form: IFormInput) => {
     const data = {
-      name: form.name,
-      email: form.email,
+      name: authData!.user.name,
+      email: authData!.user.email,
+      oldPassword: form.oldPassword,
+      password: form.password,
+      passwordConfirmation: form.passwordConfirmation,
     }
     try {
-      const response = await UserService.putUserProfile(data)
+      const response = await UserService.putResetPassword(data)
       updateUser(response.data)
-      Alert.alert('Perfil atualizado', 'Os dados do seu perfil foram atualizados.')
+      Alert.alert('Senha atualiza', 'Sua senha foi atualizada.')
       goBack()
     } catch (error) {
-      Alert.alert('Erro ao atualizar', 'Ocorreu um erro ao atualizar o perfil. Tente novamente.')
+      console.log(error)
+      Alert.alert('Erro ao atualizar senha', 'Ocorreu um erro ao atualizar sua senha. Tente novamente.')
     }
   }
 
@@ -57,29 +57,39 @@ export const UserProfileEdit = () => {
             <UserAvatar source={userAvatar} />
           </Header>
           <Content>
-            <Title>Editar dados do perfil</Title>
+            <Title>Alterar senha</Title>
             <Input
               autoCapitalize='none'
               autoCorrect={false}
               control={control}
-              name='name'
-              placeholder='Nome completo'
-              error={errors.name && errors.name.message}
+              name='oldPassword'
+              placeholder='Senha atual'
+              error={errors.oldPassword && errors.oldPassword.message}
+              secureTextEntry
             />
             <Input
               autoCapitalize='none'
               autoCorrect={false}
               control={control}
-              name='email'
-              placeholder='Email'
-              keyboardType='email-address'
-              error={errors.email && errors.email.message}
+              name='password'
+              placeholder='Nova senha'
+              error={errors.password && errors.password.message}
+              secureTextEntry
+            />
+            <Input
+              autoCapitalize='none'
+              autoCorrect={false}
+              control={control}
+              name='passwordConfirmation'
+              placeholder='Confirmação de senha'
+              error={errors.passwordConfirmation && errors.passwordConfirmation.message}
+              secureTextEntry
             />
 
             <Button
               title='Salvar alterações'
-              onPress={handleSubmit(handleProfileEdit)}
-              disabled={!!errors.name || !!errors.email}
+              onPress={handleSubmit(handleUpdatePassword)}
+              disabled={!!errors.passwordConfirmation || !!errors.password || !!errors.oldPassword}
             />
           </Content>
         </Container>
