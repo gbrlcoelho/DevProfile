@@ -30,3 +30,11 @@ export interface IResetPassword {
   password: string
   passwordConfirmation: string
 }
+
+export interface IProfileEditPassword {
+  name: string
+  email: string
+  oldPassword: string
+  password: string
+  passwordConfirmation: string
+}
