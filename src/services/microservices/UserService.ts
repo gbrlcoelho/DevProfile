@@ -24,8 +24,12 @@ class UserService {
     return await axios.post(`${this.resetPassword}`, data)
   }
 
-  getUsers = async () => {
+  getUsers = async (): ApiResponse<IUserResponse[]> => {
     return await axios.get(this.users)
+  }
+
+  getUserDetails = async (id: string): ApiResponse<IUserResponse> => {
+    return await axios.get(`${this.users}/${id}`)
   }
 }
 export default new UserService()
