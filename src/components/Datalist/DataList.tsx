@@ -8,7 +8,7 @@ export const DataList = ({data, navigateToUserDetails}: DataListProps) => {
     <UserList
       data={data}
       keyExtractor={(item) => item.id}
-      renderItem={({item}) => <User data={item} onPress={navigateToUserDetails} />}
+      renderItem={({item}) => <User data={item} onPress={() => navigateToUserDetails(item.id)} />}
       ListHeaderComponent={<UserListHeader>Usuários</UserListHeader>}
       ListEmptyComponent={<UserListEmpty>Ops! Ainda não há registros.</UserListEmpty>}
     />

@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native'
 import React, {useEffect, useState} from 'react'
 import {Alert} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
@@ -11,7 +12,6 @@ import {
   Header,
   Icon,
   UserAvatar,
-  UserAvatarButton,
   UserGreeting,
   UserInfo,
   UserInfoDetail,
@@ -20,6 +20,7 @@ import {
 } from './HomeBase'
 
 export const Home = () => {
+  const {navigate} = useNavigation()
   const {authData, signOut} = useAuth()
   const userAvatar = authData?.user.avatar_url ? {uri: authData.user.avatar_url} : avatarDefault
   const [users, setUsers] = useState<IUserResponse[]>([])
@@ -40,6 +41,10 @@ export const Home = () => {
     }
   }
 
+  const navigateToUserDetails = (userId: string) => {
+    navigate('UserDetails', {id: userId})
+  }
+
   useEffect(() => {
     loadUsers()
   }, [])
@@ -49,9 +54,9 @@ export const Home = () => {
       <Header>
         <UserWrapper>
           <UserInfo>
-            <UserAvatarButton onPress={() => {}}>
+            <TouchableOpacity onPress={() => {}}>
               <UserAvatar source={userAvatar} />
-            </UserAvatarButton>
+            </TouchableOpacity>
             <UserInfoDetail>
               <UserGreeting>Olá,</UserGreeting>
               <UserName>{authData?.user.name}</UserName>
@@ -62,7 +67,7 @@ export const Home = () => {
           </TouchableOpacity>
         </UserWrapper>
       </Header>
-      <DataList data={users} navigateToUserDetails={() => {}} />
+      <DataList data={users} navigateToUserDetails={(id) => navigateToUserDetails(id)} />
     </Container>
   )
 }

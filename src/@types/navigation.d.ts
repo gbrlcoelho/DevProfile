@@ -1,3 +1,5 @@
+import {IUserResponse} from '../services/api'
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -5,6 +7,7 @@ export declare global {
       SignUp: undefined
       ForgotPassword: undefined
       ResetPassword: undefined
+      UserDetails: Partial<IUserResponse> | undefined
     }
   }
 }
