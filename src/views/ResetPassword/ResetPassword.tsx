@@ -6,12 +6,13 @@ import {Alert, KeyboardAvoidingView, ScrollView} from 'react-native'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {Container} from '../../global/styles/genericStyles'
 import UserService from '../../services/microservices/UserService'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import resetPasswordSchema from '../../validations/ResetPasswordSchema'
 import {Icon, Logo, SignUpButton, SignUpTitle} from '../SignIn/SignInBase'
 import {SignUpForm} from '../SignUp/SignUpProps'
-import {Container, Content, Title} from './ResetPasswordBase'
+import {Content, Title} from './ResetPasswordBase'
 
 export const ResetPassword = () => {
   const {

@@ -6,11 +6,12 @@ import {Alert, KeyboardAvoidingView, ScrollView} from 'react-native'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {Container} from '../../global/styles/genericStyles'
 import UserService from '../../services/microservices/UserService'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import forgotPasswordSchema from '../../validations/ForgotPasswordSchema'
 import {SignUpForm} from '../SignUp/SignUpProps'
-import {BackToSignInButton, Container, Content, Icon, Logo, SignUpTitle, Title} from './ForgotPasswordBase'
+import {BackToSignInButton, Content, Icon, Logo, SignUpTitle, Title} from './ForgotPasswordBase'
 
 export const ForgotPassword = () => {
   const {

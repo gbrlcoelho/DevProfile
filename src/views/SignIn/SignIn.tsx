@@ -7,10 +7,11 @@ import {useTheme} from 'styled-components'
 import logo from '../../assets/logo.png'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {Container} from '../../global/styles/genericStyles'
 import {useAuth} from '../../hooks/useAuth'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import signInSchema from '../../validations/SignInSchema'
-import {Container, Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
+import {Content, Icon, Logo, SignUpButton, SignUpTitle, Title} from './SignInBase'
 import {IFormInput} from './SignInProps'
 
 export const SignIn = () => {

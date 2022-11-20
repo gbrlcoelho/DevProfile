@@ -6,13 +6,14 @@ import {Alert, KeyboardAvoidingView, ScrollView} from 'react-native'
 import avatarDefault from '../../assets/avatar01.jpeg'
 import {Button} from '../../components/Button/Button'
 import {Input} from '../../components/Input/Input'
+import {Container} from '../../global/styles/genericStyles'
 import {useAuth} from '../../hooks/useAuth'
 import UserService from '../../services/microservices/UserService'
 import {avoidingViewBehavior} from '../../utils/avoidingViewBehavior'
 import userProfilePasswordSchema from '../../validations/UserProfilePasswordSchema'
 import {IFormInput} from '../SignIn/SignInProps'
 import {GoBackButton, Header, HeaderTitle, Icon, UserAvatar} from '../UserDetails/UserDetailsBase'
-import {Container, Content, Title} from './UserProfilePasswordBase'
+import {Content, Title} from './UserProfilePasswordBase'
 
 export const UserProfilePassword = () => {
   const {authData, updateUser} = useAuth()
