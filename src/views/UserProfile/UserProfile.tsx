@@ -2,9 +2,9 @@ import {useNavigation} from '@react-navigation/native'
 import React from 'react'
 import avatarDefault from '../../assets/avatar01.jpeg'
 import {Button} from '../../components/Button/Button'
+import {Container} from '../../global/styles/genericStyles'
 import {useAuth} from '../../hooks/useAuth'
 import {
-  Container,
   Content,
   DataText,
   GoBackButton,

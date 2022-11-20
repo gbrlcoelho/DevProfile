@@ -2,11 +2,11 @@ import {useNavigation, useRoute} from '@react-navigation/native'
 import React, {useEffect, useState} from 'react'
 import {Alert} from 'react-native'
 import avatarDefault from '../../assets/avatar01.jpeg'
+import {Container} from '../../global/styles/genericStyles'
 import {useAuth} from '../../hooks/useAuth'
 import {IUserResponse} from '../../services/api'
 import UserService from '../../services/microservices/UserService'
 import {
-  Container,
   Content,
   ContentTitle,
   DataText,

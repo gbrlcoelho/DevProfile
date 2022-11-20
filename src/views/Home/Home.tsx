@@ -4,20 +4,11 @@ import {Alert} from 'react-native'
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import avatarDefault from '../../assets/avatar01.jpeg'
 import {DataList} from '../../components/Datalist/DataList'
+import {Container} from '../../global/styles/genericStyles'
 import {useAuth} from '../../hooks/useAuth'
 import {IUserResponse} from '../../services/api'
 import UserService from '../../services/microservices/UserService'
-import {
-  Container,
-  Header,
-  Icon,
-  UserAvatar,
-  UserGreeting,
-  UserInfo,
-  UserInfoDetail,
-  UserName,
-  UserWrapper,
-} from './HomeBase'
+import {Header, Icon, UserAvatar, UserGreeting, UserInfo, UserInfoDetail, UserName, UserWrapper} from './HomeBase'
 
 export const Home = () => {
   const {navigate} = useNavigation()
